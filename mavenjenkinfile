@@ -15,14 +15,14 @@ pipeline
         {
             steps
             {
-
+              echo "testenv"
             }
         }
         stage('Deploy')
         {
             steps
             {
-
+              echo "Deploy-env"
             }
         }
     }
