@@ -11,11 +11,26 @@ pipeline
               git credentialsId: '4a84056a-bb79-4951-929a-f65d3a60ff5a', url: 'https://github.com/Waterlabsadmin/EuclidPay.git'
             }
         }
-        stage('Test')
+        stage('filesmove')
         {
             steps
             {
-              echo "testenv"
+              script
+              {
+                  File sourceFolder = new File("/home/administrator/Rajesh/jenkins_home/workspace/maven-pipeline1");
+                  File  destinationFolder = new File("/var/Applicaitons/");
+                  File[] listOfFiles = sourceFolder.listFiles();
+                  echo "Files Total: " + listOfFiles.length;
+
+                  for (File file : listOfFiles)
+                  {
+                      if (file.isFile())
+                      {
+                          echo file.getName()
+                          Files.copy(Paths.get(file.path), Paths.get("/var/Applicaitons/"));
+                      }
+                  }
+                }
             }
         }
         stage('Deploy')
