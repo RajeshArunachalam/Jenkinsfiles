@@ -1,0 +1,29 @@
+pipeline
+{
+   agent any
+
+   stages
+   {
+      stage('GIT')
+        {
+            steps
+            {
+              git credentialsId: '4a84056a-bb79-4951-929a-f65d3a60ff5a', url: 'https://github.com/Waterlabsadmin/EuclidPay.git'
+            }
+        }
+        stage('Test')
+        {
+            steps
+            {
+
+            }
+        }
+        stage('Deploy')
+        {
+            steps
+            {
+
+            }
+        }
+    }
+}
